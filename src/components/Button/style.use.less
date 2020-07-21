@@ -1,0 +1,117 @@
+@import "../../styles/variables";
+
+.button-size(@padding-y, @padding-x, @font-size, @border-raduis) {
+    padding: @padding-y @padding-x;
+    font-size: @font-size;
+    border-radius: @border-raduis;
+}
+
+.button-style(
+    @background,
+    @border,
+    @color,
+    @hover-background: lighten(@background, 7.5%),
+    @hover-border: lighten(@border, 10%),
+    @hover-color: @color,
+
+    @active-background: darken(@background, 7.5%),
+    @active-border: darken(@border, 10%),
+    @active-color: @color
+) {
+    color: @color;
+    background: @background;
+    border-color: @border;
+    &:hover {
+        color: @hover-color;
+        background: @hover-background;
+        border-color: @hover-border;
+    }
+
+    &:active {
+        color: @active-color;
+        background: @active-background;
+        border-color: @active-border;
+    }
+    //&:focus,
+    //&.focus {
+    //    color: @hover-color;
+    //    background: @hover-background;
+    //    border-color: @hover-border;
+    //}
+    &:disabled,
+    &.disabled {
+        color: @color;
+        background: @background;
+        border-color: @border;
+    }
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    font-weight: @btn-font-weight;
+    line-height: @btn-line-height;
+    color: @body-color;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: @btn-border-width solid transparent;
+    .button-size( @btn-padding-y,  @btn-padding-x,  @btn-font-size,  @border-radius);
+    box-shadow: @btn-box-shadow;
+    cursor: pointer;
+    transition: @btn-transition;
+    &.disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        opacity: @btn-disabled-opacity;
+        box-shadow: none;
+        > * {
+            pointer-events: none;
+        }
+    }
+    
+    &.btn-lg {
+        .button-size(@btn-padding-y-lg, @btn-padding-x-lg, @btn-font-size-lg, @btn-border-radius-lg)
+    }
+
+    &.btn-sm {
+        .button-size(@btn-padding-y-sm, @btn-padding-x-sm, @btn-font-size-sm, @btn-border-radius-sm);
+    }
+    
+    &.btn-primary {
+        .button-style(@primary, @primary, @white)
+    }
+
+    &.btn-danger {
+        .button-style(@danger, @danger, @white)
+    }
+
+    &.btn-default {
+        .button-style(@white, @gray-33, @body-color, @white, @primary, @primary)
+    }
+    
+    &.btn-link {
+        font-weight: @font-weight-normal;
+        color: @btn-link-color;
+        text-decoration: @link-decoration;
+        box-shadow: none;
+        &:hover {
+            color: lighter(@btn-link-color, 7.5%);
+            text-decoration: @link-hover-decoration;
+        }
+        &:active {
+            color: darken(@btn-link-color, 10%);
+        }
+        //&:focus,
+        //&.focus {
+        //    text-decoration: @link-hover-decoration;
+        //    box-shadow: none;
+        //}
+        &:disabled,
+        &.disabled {
+            color: @btn-link-disabled-color;
+            pointer-events: none;
+        }
+    }
+}
