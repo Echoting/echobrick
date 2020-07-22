@@ -10,7 +10,7 @@ export enum AlertType {
     Warning = 'warning'
 }
 
-interface AlertBaseProps {
+export interface AlertBaseProps {
     type?: AlertType;
     className?: string;
 
@@ -27,7 +27,7 @@ interface AlertBaseProps {
     message?: string;
 
     // 关闭按钮的回调
-    onClose?: (visible: boolean) => void;
+    onClose?: () => void;
 }
 
 export const Alert: React.FC<AlertBaseProps> = props => {
@@ -58,14 +58,12 @@ export const Alert: React.FC<AlertBaseProps> = props => {
     const [visibleState, setVisibleState] = useState(!!defaultVisibleState);
 
     const handleClose = (e: React.MouseEvent) => {
-        if ('visible' in props) {
-            if (typeof onClose === 'function') {
-                onClose(visibleState);
-            } else {
-                console.log('请设置 onClose 方法')
-            }
-        } else {
 
+        if (typeof onClose === 'function') {
+            onClose();
+        }
+
+        if (!('visible' in props)) {
             setVisibleState(false);
         }
     };
