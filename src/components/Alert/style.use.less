@@ -1,0 +1,47 @@
+@import "../../styles/variables";
+
+.border(@color: @alert-border-color-info, @style: solid, @width: @border-width) {
+    border: @width @style @color;
+}
+
+.alert {
+    position: relative;
+    .border();
+    background: @alert-background-color-info;
+    border-radius: @border-radius;
+    padding: @alert-padding-vertical @alert-padding-horizontal;
+
+    font-size: @font-size-normal;
+    color: @gray-33;
+
+    line-height: @line-height-base;
+
+    &.alert-success {
+        background: @alert-background-color-success;
+        border-color: @alert-border-color-success;
+    }
+
+    &.alert-danger {
+        background: @alert-background-color-danger;
+        border-color: @alert-border-color-danger;
+    }
+
+    &.alert-warning {
+        background: @alert-background-color-warning;
+        border-color: @alert-border-color-warning;
+    }
+
+    .alert-headline {
+        font-weight: @font-weight-bold;
+        font-size: @font-size-large;
+    }
+
+    .alert-closeX {
+        position: absolute;
+        top: 6px;
+        right: 14px;
+        font-size: @font-size-small;
+        color: @gray-99;
+    }
+
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button, {ButtonSize, ButtonType} from './components/Button';
+import Alert, {AlertType} from './components/Alert';
 
 function App() {
     return (
@@ -32,6 +33,14 @@ function App() {
                 console.log('按钮被点击了')
             }} disabled={true}>primary button</Button>
             <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>large button</Button>
+
+            <Alert type={AlertType.Success} message={'这里是success alert'} visible={true} />
+            <Alert type={AlertType.Info} message={'Info alert'}/>
+            <Alert type={AlertType.Warning} message={'这里是Warning alert'} title={'这里是title'} />
+
+            <Alert type={AlertType.Danger} message={'这里是Danger alert'} closable={false}/>
+
+
 
         </div>
     );
