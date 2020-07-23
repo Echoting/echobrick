@@ -3,6 +3,9 @@ import React from 'react';
 import Button, {ButtonSize, ButtonType} from './components/Button';
 import Alert, {AlertType} from './components/Alert';
 
+import Menu from './components/Menu/menu';
+import MenuItem from './components/Menu/menu-item';
+
 function App() {
     return (
         <div className="App">
@@ -34,12 +37,43 @@ function App() {
             }} disabled={true}>primary button</Button>
             <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>large button</Button>
 
-            <Alert type={AlertType.Success} message={'这里是success alert'} visible={true} />
-            <Alert type={AlertType.Info} message={'Info alert'}/>
+            <Alert type={AlertType.Success} message={'这里是success alert'} visible={true} defaultVisible={false} />
+            <Alert type={AlertType.Info} message={'Info alert'} onClose={() => {
+                console.log('关闭点击了')
+            }}/>
             <Alert type={AlertType.Warning} message={'这里是Warning alert'} title={'这里是title'} />
 
             <Alert type={AlertType.Danger} message={'这里是Danger alert'} closable={false}/>
 
+
+            <Menu defaultIndex={0} onSelect={index => {
+                console.log(index)
+            }}>
+                <MenuItem index={0}>
+                    cool link 1
+                </MenuItem>
+                <MenuItem index={1}>
+                    cool link 2
+                </MenuItem>
+                <MenuItem index={2}>
+                    cool link 3
+                </MenuItem>
+            </Menu>
+
+
+            <Menu defaultIndex={0} mode={'vertical'} onSelect={index => {
+                console.log(index)
+            }}>
+                <MenuItem index={0}>
+                    cool link 1
+                </MenuItem>
+                <MenuItem index={1}>
+                    cool link 2
+                </MenuItem>
+                <MenuItem index={2}>
+                    cool link 3
+                </MenuItem>
+            </Menu>
 
 
         </div>
