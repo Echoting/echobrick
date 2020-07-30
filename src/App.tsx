@@ -5,6 +5,7 @@ import Alert, {AlertType} from './components/Alert';
 
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menu-item';
+import SubMenu from './components/Menu/sub-menu';
 
 function App() {
     return (
@@ -46,31 +47,57 @@ function App() {
             <Alert type={AlertType.Danger} message={'这里是Danger alert'} closable={false}/>
 
 
-            <Menu defaultIndex={0} onSelect={index => {
+            <Menu defaultIndex={'0'} onSelect={index => {
                 console.log(index)
             }}>
-                <MenuItem index={0}>
+                <MenuItem>
                     cool link 1
                 </MenuItem>
-                <MenuItem index={1}>
+                <MenuItem>
                     cool link 2
                 </MenuItem>
-                <MenuItem index={2}>
+                <MenuItem>
                     cool link 3
                 </MenuItem>
+
+                <SubMenu title={'subMenu'}>
+                    <MenuItem>
+                        sub menu 1
+                    </MenuItem>
+                    <MenuItem>
+                        sub menu 1
+                    </MenuItem>
+                </SubMenu>
+
             </Menu>
 
 
-            <Menu defaultIndex={0} mode={'vertical'} onSelect={index => {
+            <Menu defaultIndex={'0'} mode={'vertical'} defaultOpenSubMenus={['2', '2-2']} onSelect={index => {
                 console.log(index)
             }}>
-                <MenuItem index={0}>
+                <MenuItem>
                     cool link 1
                 </MenuItem>
-                <MenuItem index={1}>
+                <MenuItem>
                     cool link 2
                 </MenuItem>
-                <MenuItem index={2}>
+                <SubMenu title={'subMenu'}>
+                    <MenuItem>
+                        sub menu 1
+                    </MenuItem>
+                    <MenuItem>
+                        sub menu 1
+                    </MenuItem>
+                    <SubMenu title={'subMenu'}>
+                        <MenuItem>
+                            sub menu 1
+                        </MenuItem>
+                        <MenuItem>
+                            sub menu 1
+                        </MenuItem>
+                    </SubMenu>
+                </SubMenu>
+                <MenuItem>
                     cool link 3
                 </MenuItem>
             </Menu>

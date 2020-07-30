@@ -20,15 +20,46 @@
             pointer-events: none;
             cursor: default;
         }
-        &.active {
-            color: @menu-item-active-color;
-            border-bottom: @menu-item-active-border-width solid @menu-item-active-color;
+
+        // subMenu
+        &.sub-menu-item {
+            position: relative;
+
+            .echo-brick-submenu {
+                display: none;
+
+                list-style: none;
+                white-space: nowrap;
+                padding-left: 0;
+
+                .menu-item {
+                    padding: @menu-item-padding-y @menu-item-padding-x;
+                    cursor: pointer;
+                    transition: @menu-transition;
+                    color: @body-color;
+                    &.active {
+                        color: @menu-item-active-color;
+                        background: @menu-item-hover-background-color;
+                        //border-bottom: @menu-item-active-border-width solid @menu-item-active-color;
+                    }
+
+                    &:hover, &:focus {
+                        text-decoration: none;
+
+                        background: @menu-item-hover-background-color;
+                    }
+                }
+            }
+
+            .echo-brick-submenu.menu-opened {
+                display: block;
+            }
         }
     }
     
     &.menu-vertical {
         flex-direction: column;
-        border-bottom: 0px;
+        border-bottom: 0;
 
         >.menu-item {
             border-left: @menu-item-active-border-width solid transparent;
@@ -36,6 +67,27 @@
                 border-bottom: 0px;
                 border-left: @menu-item-active-border-width solid @menu-item-active-color;
             }
+        }
+    }
+
+    &.menu-horizontal {
+        >.menu-item {
+            border-bottom: @menu-item-active-border-width solid transparent;
+
+            &.active {
+                color: @menu-item-active-color;
+                border-bottom: @menu-item-active-border-width solid @menu-item-active-color;
+            }
+        }
+
+        .echo-brick-submenu {
+            position: absolute;
+            background: @white;
+            z-index: 100;
+            top: calc(100% + 8px);
+            left: 0;
+            border: @menu-border-width solid @menu-border-color;
+            box-shadow: @submenu-box-shadow;
         }
     }
     
