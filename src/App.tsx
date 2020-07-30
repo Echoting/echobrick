@@ -3,9 +3,12 @@ import React from 'react';
 import Button, {ButtonSize, ButtonType} from './components/Button';
 import Alert, {AlertType} from './components/Alert';
 
-import Menu from './components/Menu/menu';
-import MenuItem from './components/Menu/menu-item';
-import SubMenu from './components/Menu/sub-menu';
+import Menu from './components/Menu/index';
+// import MenuItem from './components/Menu/menu-item';
+// import SubMenu from './components/Menu/sub-menu';
+
+
+
 
 function App() {
     return (
@@ -50,24 +53,24 @@ function App() {
             <Menu defaultIndex={'0'} onSelect={index => {
                 console.log(index)
             }}>
-                <MenuItem>
+                <Menu.MenuItem>
                     cool link 1
-                </MenuItem>
-                <MenuItem>
+                </Menu.MenuItem>
+                <Menu.MenuItem>
                     cool link 2
-                </MenuItem>
-                <MenuItem>
+                </Menu.MenuItem>
+                <Menu.MenuItem>
                     cool link 3
-                </MenuItem>
+                </Menu.MenuItem>
 
-                <SubMenu title={'subMenu'}>
-                    <MenuItem>
+                <Menu.SubMenu title={'subMenu'}>
+                    <Menu.MenuItem>
                         sub menu 1
-                    </MenuItem>
-                    <MenuItem>
+                    </Menu.MenuItem>
+                    <Menu.MenuItem>
                         sub menu 1
-                    </MenuItem>
-                </SubMenu>
+                    </Menu.MenuItem>
+                </Menu.SubMenu>
 
             </Menu>
 
@@ -75,31 +78,31 @@ function App() {
             <Menu defaultIndex={'0'} mode={'vertical'} defaultOpenSubMenus={['2', '2-2']} onSelect={index => {
                 console.log(index)
             }}>
-                <MenuItem>
+                <Menu.MenuItem>
                     cool link 1
-                </MenuItem>
-                <MenuItem>
+                </Menu.MenuItem>
+                <Menu.MenuItem>
                     cool link 2
-                </MenuItem>
-                <SubMenu title={'subMenu'}>
-                    <MenuItem>
+                </Menu.MenuItem>
+                <Menu.SubMenu title={'subMenu'}>
+                    <Menu.MenuItem>
                         sub menu 1
-                    </MenuItem>
-                    <MenuItem>
+                    </Menu.MenuItem>
+                    <Menu.MenuItem>
                         sub menu 1
-                    </MenuItem>
-                    <SubMenu title={'subMenu'}>
-                        <MenuItem>
+                    </Menu.MenuItem>
+                    <Menu.SubMenu title={'subMenu'}>
+                        <Menu.MenuItem>
                             sub menu 1
-                        </MenuItem>
-                        <MenuItem>
+                        </Menu.MenuItem>
+                        <Menu.MenuItem>
                             sub menu 1
-                        </MenuItem>
-                    </SubMenu>
-                </SubMenu>
-                <MenuItem>
+                        </Menu.MenuItem>
+                    </Menu.SubMenu>
+                </Menu.SubMenu>
+                <Menu.MenuItem>
                     cool link 3
-                </MenuItem>
+                </Menu.MenuItem>
             </Menu>
 
 

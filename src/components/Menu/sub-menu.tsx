@@ -3,7 +3,7 @@ import c from 'classnames';
 
 import {MenuContext} from './menu';
 
-export interface subMenuProps {
+export interface SubMenuProps {
     index?: string,
 
     // subMenu item name
@@ -11,7 +11,7 @@ export interface subMenuProps {
     className?: string
 }
 
-const SubMenu: React.FC<subMenuProps> = props => {
+const SubMenu: React.FC<SubMenuProps> = props => {
     const {index, title, children, className} = props;
 
     const context = useContext(MenuContext);
@@ -49,7 +49,7 @@ const SubMenu: React.FC<subMenuProps> = props => {
 
     const renderChildren = () => {
         const childrenComponent = React.Children.map(children, (child, i) => {
-            const childElement = child as React.FunctionComponentElement<subMenuProps>;
+            const childElement = child as React.FunctionComponentElement<SubMenuProps>;
             const {displayName} = childElement.type;
 
             if (displayName === 'SubMenu' || displayName === 'MenuItem') {
